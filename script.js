@@ -3,12 +3,17 @@ import {TodoComponent} from './todoComponent.js';
 const app = document.getElementById('app');
 
 
-const arr = [
-    {id : 1, content: 'Buy a new gaming laptop'},
-    {id : 2, content: 'Complete a previous task'},
-    {id : 1, content: 'Buy a new gaming laptop'},
-    {id : 2, content: 'Complete a previous task'},
-]
 
-let todos = new TodoComponent(arr);
+let todoList = JSON.parse(localStorage.getItem('todos'));
+
+if(todoList == null || todoList.length == 0) {
+    todoList = [];
+    let curIndex = 0;
+    localStorage.setItem('todos',JSON.stringify(todoList));
+    localStorage.setItem('curIndex',JSON.stringify(curIndex));
+}
+
+
+
+let todos = new TodoComponent(todoList);
 app.appendChild(todos.render());

@@ -56,11 +56,9 @@ input {
 
 .todo-list {
     width: 100%;
-    height: 260px;
+    height: 250px;
     margin-top: 15px;
-    overflow: auto
-
-
+    overflow: auto;
 }
 
 .todo {
@@ -74,6 +72,7 @@ input {
     border-radius: 2px;
     cursor: pointer;
     transition: background .3s;
+    position: relative;
 }
 
 .todo:hover {
@@ -106,4 +105,32 @@ input {
 .btn-clear:hover {
     background: #df2336;
     cursor: pointer;
+}
+
+.trash-icon {
+    margin: 10px auto;
+    color: #fff;
+    font-size: 17px;
+}
+
+.btn-trash {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-block;
+    width: 36px;
+    height: 100%;
+    background: #DC3545;
+    display: flex;
+    border-radius: 2px;
+    transition: background 0.3s;
+}
+
+.btn-trash:hover {
+    background: #ad0717;
+    cursor: pointer;
+}
+
+.hidden {
+    visibility: hidden;
 }
