@@ -24,6 +24,10 @@ export const PropsConstant = {
     width: 450,
     height: 35,
   },
+  logo_props: {
+    src: 'https://github.githubassets.com/images/modules/logos_page/Octocat.png',
+    title: 'Github Finder'
+  }
 };
 
 export const Method = {
@@ -46,6 +50,17 @@ export const Method = {
       xhr.send();
     });
   },
+  keepInputValue() {
+    let inputValue = document.querySelector("input").value;
+    sessionStorage.setItem("input-value", JSON.stringify(inputValue));
+  },
+  getInputValueFromSession() {
+    let inputValue = JSON.parse(sessionStorage.getItem("input-value"));
+    document.querySelector("input").value = inputValue;
+  },
+  resetValue() {
+    document.querySelector("input").value = "";
+  },
   checkInputValue() {
     let inputValue = document.querySelector("input").value;
     return inputValue.length > 0;
@@ -62,5 +77,13 @@ export const Method = {
     removeElement.forEach((element) => {
       app.removeChild(element);
     });
+  },
+  setLoading(check) {
+    const overlay = document.getElementById("overlay");
+    if (check) {
+      overlay.classList.remove("hidden");
+    } else {
+      overlay.classList.add("hidden");
+    }
   },
 };

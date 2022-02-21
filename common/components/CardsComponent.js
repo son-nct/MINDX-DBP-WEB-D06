@@ -7,7 +7,10 @@ class CardsComponent {
   $repositoryContainer;
   $followerContainer;
   $followingContainer;
-  $footercards;
+  $icon_github;
+  $div_wrap1;
+  $div_wrap2;
+  $footerContainer;
 
   constructor(userIn4 = {}) {
     this.$cards = document.createElement("div");
@@ -50,6 +53,7 @@ class CardsComponent {
 
     // repository container
     this.$repositoryContainer = document.createElement("div");
+    this.$repositoryContainer.classList.add("repository-container");
     let repository = document.createElement("p");
     let repository_value = document.createElement("p");
 
@@ -62,10 +66,17 @@ class CardsComponent {
 
     detail_div.appendChild(repository_value);
     detail_div.appendChild(repository);
+
+    // folder icon
+    let folder_icon = document.createElement("i");
+    folder_icon.classList.add("fa-solid", "fa-folder");
+
+    this.$repositoryContainer.appendChild(folder_icon);
     this.$repositoryContainer.appendChild(detail_div);
 
     // follower container
     this.$followerContainer = document.createElement("div");
+    this.$followerContainer.classList.add("follower-container");
     let follower = document.createElement("p");
     let follower_value = document.createElement("p");
 
@@ -75,12 +86,20 @@ class CardsComponent {
     let detail_div2 = document.createElement("div");
     detail_div2.classList.add("detail_div");
 
+    // follower icon
+
+    let follower_icon = document.createElement("i");
+    follower_icon.classList.add("fa-solid", "fa-users");
+
     detail_div2.appendChild(follower_value);
     detail_div2.appendChild(follower);
+
+    this.$followerContainer.appendChild(follower_icon);
     this.$followerContainer.appendChild(detail_div2);
 
     // following container
     this.$followingContainer = document.createElement("div");
+    this.$followingContainer.classList.add("following-container");
     let following = document.createElement("p");
     let following_value = document.createElement("p");
 
@@ -90,20 +109,49 @@ class CardsComponent {
     let detail_div3 = document.createElement("div");
     detail_div3.classList.add("detail_div");
 
+    //following icon
+    let following_icon = document.createElement("i");
+    following_icon.classList.add("fa-solid", "fa-user-plus");
+
     detail_div3.appendChild(following_value);
     detail_div3.appendChild(following);
+
+    this.$followingContainer.appendChild(following_icon);
     this.$followingContainer.appendChild(detail_div3);
 
     this.$detailContainer = document.createElement("div");
     this.$detailContainer.classList.add("detail-container");
+
+    // div wrap repository container , following container , follower container
+    this.$div_wrap1 = document.createElement("div");
+    this.$div_wrap1.classList.add("div_wrap");
+
+    // div wrap icon github
+    this.$div_wrap2 = document.createElement("div");
+    this.$div_wrap2.classList.add("div_wrap");
+
+    this.$icon_github = document.createElement("i");
+    this.$icon_github.classList.add("fa-brands", "fa-github");
+
+    this.$detailContainer.appendChild(this.$icon_github);
+
+    // div display color
+    this.$footerContainer = document.createElement("div");
+    this.$footerContainer.classList.add('footer-container');
   }
 
   render() {
-    this.$detailContainer.appendChild(this.$repositoryContainer);
-    this.$detailContainer.appendChild(this.$followerContainer);
-    this.$detailContainer.appendChild(this.$followingContainer);
+    this.$div_wrap1.appendChild(this.$repositoryContainer);
+    this.$div_wrap1.appendChild(this.$followerContainer);
+    this.$div_wrap1.appendChild(this.$followingContainer);
+
+    this.$div_wrap2.appendChild(this.$icon_github);
+
+    this.$detailContainer.appendChild(this.$div_wrap1);
+    this.$detailContainer.appendChild(this.$div_wrap2);
 
     this.$cards.appendChild(this.$detailContainer);
+    this.$cards.appendChild(this.$footerContainer);
 
     return this.$cards;
   }
