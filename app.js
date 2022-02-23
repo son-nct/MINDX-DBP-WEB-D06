@@ -19,13 +19,14 @@ app.appendChild(searchComponent.render());
 let btn_search = document.querySelector(".btn-search");
 let btn_reset = document.querySelector(".btn-reset");
 
+//process when btn reset is clicked
 btn_reset.addEventListener("click", () => {
   Method.resetValue();
   Method.removeChild();
-
-  sessionStorage.removeItem("user");
 });
 
+
+//process when btn search is clicked
 btn_search.addEventListener("click", () => {
   if (app.childNodes.length > 1) {
     Method.removeChild();
@@ -60,6 +61,7 @@ btn_search.addEventListener("click", () => {
   }
 });
 
+// check if user refresh the page
 if (window.performance) {
   Method.getInputValue();
 

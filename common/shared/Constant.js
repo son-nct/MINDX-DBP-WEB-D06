@@ -25,9 +25,9 @@ export const PropsConstant = {
     height: 35,
   },
   logo_props: {
-    src: 'https://github.githubassets.com/images/modules/logos_page/Octocat.png',
-    title: 'Github Finder'
-  }
+    src: "https://github.githubassets.com/images/modules/logos_page/Octocat.png",
+    title: "Github Finder",
+  },
 };
 
 export const Method = {
@@ -60,6 +60,8 @@ export const Method = {
   },
   resetValue() {
     document.querySelector("input").value = "";
+    sessionStorage.removeItem("input-value");
+    sessionStorage.removeItem("user");
   },
   checkInputValue() {
     let inputValue = document.querySelector("input").value;
